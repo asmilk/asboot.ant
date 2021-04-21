@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="draw(title, link, script)">
+	<meta charset="UTF-8">
+	<title th:replace="${title}">asBoot.ant</title>
+	<link rel="icon" th:href="@{/favicon.ico}" />
+	<link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/hot-sneaks/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/style/base.css}" />
+	<link th:replace="${link}" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script th:replace="${script}"></script>
+</head>
+</html>

@@ -1,0 +1,92 @@
+{
+	"properties": [
+		{
+			"name": "google.code.kaptcha.session.key",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.session.date",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.border",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.border.color",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.border.thickness",
+			"type": "java.lang.Integer"
+		},
+		{
+			"name": "google.code.kaptcha.noise.color",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.noise.impl",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.obscurificator.impl",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.producer.impl",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.impl",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.char.string",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.char.length",
+			"type": "java.lang.Integer"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.font.names",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.font.color",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.font.size",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.textproducer.char.space",
+			"type": "java.lang.Integer"
+		},
+		{
+			"name": "google.code.kaptcha.word.impl",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.background.impl",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.background.clear.from",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.background.clear.to",
+			"type": "java.lang.String"
+		},
+		{
+			"name": "google.code.kaptcha.image.width",
+			"type": "java.lang.Integer"
+		},
+		{
+			"name": "google.code.kaptcha.image.height",
+			"type": "java.lang.Integer"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.path {
+	color: red;
+}
+
+.exception {
+	color: red;
+}
+
+form fieldset div label {
+	width: 100px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:replace="layout/page::draw(~{::title},~{::link},~{},~{::body})" th:fragment="draw(path)">
+<head>
+	<title th:text="#{login.title}"></title>
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/style/login.css}">
+</head>
+<body>
+	<h1 class="path" th:include="${path}">login.html</h1>
+	<div th:text="${session.SPRING_SECURITY_SAVED_REQUEST.redirectUrl}"></div>
+	<form th:action="@{/login}" th:object="${user}" method="post">
+		<fieldset>
+			<legend th:text="#{login.form.legend}"></legend>
+			<span class="exception" th:if="${session.SPRING_SECURITY_LAST_EXCEPTION}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+			<div>
+				<label th:text="#{login.form.label.username}" for="username"></label>
+				<input class="ui-widget-content ui-corner-all" type="text" th:field="*{username}" th:placeholder="#{login.form.input.placeholder.username}" />
+			</div>
+			<div>
+				<label th:text="#{login.form.label.password}" for="password"></label>
+				<input class="ui-widget-content ui-corner-all" type="password" th:field="*{password}" th:placeholder="#{login.form.input.placeholder.password}" />
+			</div>
+			<div>
+				<img alt="captcha" th:src="@{/captcha}"><br />
+				<label th:text="#{login.form.label.captcha}" for="captcha"></label>
+				<input class="ui-widget-content ui-corner-all" type="text" name="captcha" id="captcha" th:placeholder="#{login.form.input.placeholder.captcha}" />
+			</div>
+			<div>
+				<input type="checkbox" name="remember-me" value="true" />
+				<span th:text="#{login.form.span.remember-me}"></span>
+			</div>
+			<div>
+				<input type="hidden" name="redirect_url" th:value="${session.SPRING_SECURITY_SAVED_REQUEST.redirectUrl}" />
+				<input class="ui-button ui-widget ui-corner-all" type="submit" th:value="#{login.form.input.submit}" />
+			</div>
+		</fieldset>
+	</form>
+</body>
+</html>

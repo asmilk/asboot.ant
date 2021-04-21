@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:replace="layout/page::draw(~{::title},~{::link},~{},~{::body})">
+<head>
+	<title th:text="#{oauth-approval.title}"></title>
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/style/oauth.css}">
+</head>
+<body>
+	<h1 class="page">oauth-approval.html</h1>
+	<p class="question" th:text="#{oauth-approval.question(${session.authorizationRequest.clientId})}"></p>
+	<form th:action="@{/oauth/authorize}" method="post">
+		<fieldset>
+		<legend th:text="#{oauth-approval.form.legend}"></legend>
+		<div>
+			<ul>
+				<li th:each="scope:${scopes}">
+					<label th:text="${scope.key}"></label>
+					<input type="radio" th:name="${scope.key}" value="true" th:checked="${scope.value}"/>
+					<span th:text="#{oauth-approval.form.span.approve}"></span>
+					<input type="radio" th:name="${scope.key}" value="false" th:checked="${!scope.value}"/>
+					<span th:text="#{oauth-approval.form.span.deny}"></span>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<input type="hidden" name="user_oauth_approval" th:value="${!#maps.isEmpty(scopes)}" />
+			<input class="ui-button ui-widget ui-corner-all" type="submit" th:value="#{oauth-approval.form.input.submit.authorize}" />
+			<input class="ui-button ui-widget ui-corner-all" th:if="${#maps.isEmpty(scopes)}" type="submit" th:value="#{oauth-approval.form.input.submit.deny}" />
+		</div>
+		</fieldset>
+	</form>
+</body>
+</html>

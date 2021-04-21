@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.copy {
+	color: blue;
+}
+
+form fieldset div {
+	margin-bottom: 10px;
+}
+
+form fieldset div label {
+	display: inline-block;
+}
+
+form fieldset input[type="text"], form fieldset input[type="password"]{
+	width: 200px;
+} 

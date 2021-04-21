@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>index.html</title>
+</head>
+<body>
+
+	<h6>authorities:</h6>
+	<ul th:each="item : ${#authentication.authorities}">
+		<li th:text="${item.authority}"></li>
+	</ul>
+	
+	<div sec:authorize="isAnonymous()">
+		<h1>isAnonymous</h1>
+		<a th:href="@{/index}">/index</a>
+	</div>
+	<div sec:authorize="isAuthenticated()">
+		<img alt="logo" src="/image/logo.jpg" width="100"/>
+		<h1>isAuthenticated</h1>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+		
+		<!-- <h6>hasScope:</h6>
+		<ul>
+			<li sec:authorize="#oauth2.hasScope('all')">scope_all</li>
+			<li sec:authorize="#oauth2.hasAnyScope('all','other')">scope_all|scope_other</li>
+		</ul> -->
+		
+		<h6>hasRole:</h6>
+		<ul>
+			<li sec:authorize="hasRole('ROLE_USER')">[ROLE_USER]</li>
+			<li sec:authorize="hasRole('ROLE_STAFF')">[ROLE_STAFF]</li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')">[ROLE_ADMIN]</li>
+		</ul>
+		
+		<dl>
+			<dt>name:</dt>
+			<dd sec:authentication="name" />
+			<dt>principal:</dt>
+			<dd sec:authentication="principal" />
+			<dt>credentials:</dt>
+			<dd sec:authentication="credentials" />
+			<dt>authorities:</dt>
+			<dd sec:authentication="authorities" />
+			<dt>details:</dt>
+			<dd sec:authentication="details" />
+			<dt>details.remoteAddress:</dt>
+			<dd sec:authentication="details.remoteAddress" />
+			<dt>details.sessionId:</dt>
+			<dd sec:authentication="details.sessionId" />
+			<dt>details.tokenType:</dt>
+			<dd sec:authentication="details.tokenType" />
+			<dt>details.tokenValue:</dt>
+			<dd sec:authentication="details.tokenValue" />
+		</dl>
+		
+		<h6>URL-Scope Api:</h6>
+		<ul>
+			<li sec:authorize-url="/scope/all"><a th:href="@{/scope/all}">/scope/all</a></li>
+			<li sec:authorize-url="/scope/client"><a th:href="@{/scope/client}">/scope/client</a></li>
+			<li sec:authorize-url="/scope/account"><a th:href="@{/scope/account}">/scope/account</a></li>
+		</ul>
+		
+		<h6>URL-Role Api:</h6>
+		<ul>
+			<li sec:authorize-url="/role/user"><a th:href="@{/role/user}">/role/user</a></li>
+			<li sec:authorize-url="/role/admin"><a th:href="@{/role/admin}">/role/admin</a></li>
+		</ul>
+		
+		<h6>EXP-Role Api:</h6>
+		<ul>
+			<li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/role/user}">/role/user</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/role/admin}">/role/admin</a></li>
+			
+			<li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/uaa/role/user}">/uaa/role/user</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/uaa/role/admin}">/uaa/role/admin</a></li>
+			
+			<li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/res/role/user}">/res/role/user</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/res/role/admin}">/res/role/admin</a></li>
+		</ul>
+		
+		<h6>Sso Api:</h6>
+		<ul>
+			<li><a th:href="@{/user_info}">/user_info</a></li>
+			
+			<li><a th:href="@{/role/user}">/role/user</a></li>
+			<li><a th:href="@{/role/admin}">/role/admin</a></li>
+			
+			<li><a th:href="@{/scope/all}">/scope/all</a></li>
+			<li><a th:href="@{/scope/client}">/scope/client</a></li>
+			<li><a th:href="@{/scope/account}">/scope/account</a></li>
+			
+			<li><a th:href="@{/auth/admin/actuator}">/auth/admin/actuator</a></li>
+			<li><a th:href="@{/auth/all/admin}">/auth/all/admin</a></li>
+			<li><a th:href="@{/auth/user/client}">/auth/user/client</a></li>
+		</ul>
+		
+		<h6>Uaa Api:</h6>
+		<ul>
+			<li><a th:href="@{/uaa/user_info}">/uaa/user_info</a></li>
+			
+			<li><a th:href="@{/uaa/role/user}">/uaa/role/user</a></li>
+			<li><a th:href="@{/uaa/role/admin}">/uaa/role/admin</a></li>
+			
+			<li><a th:href="@{/uaa/scope/all}">/uaa/scope/all</a></li>
+			<li><a th:href="@{/uaa/scope/client}">/uaa/scope/client</a></li>
+			<li><a th:href="@{/uaa/scope/account}">/uaa/scope/account</a></li>
+			
+			<li><a th:href="@{/uaa/auth/admin/actuator}">/uaa/auth/admin/actuator</a></li>
+			<li><a th:href="@{/uaa/auth/all/admin}">/uaa/auth/all/admin</a></li>
+			<li><a th:href="@{/uaa/auth/user/client}">/uaa/auth/user/client</a></li>
+		</ul>
+		
+		<h6>Res Api:</h6>
+		<ul>
+			<li><a th:href="@{/res/user_info}">/res/user_info</a></li>
+			
+			<li><a th:href="@{/res/role/user}">/res/role/user</a></li>
+			<li><a th:href="@{/res/role/admin}">/res/role/admin</a></li>
+			
+			<li><a th:href="@{/res/scope/all}">/res/scope/all</a></li>
+			<li><a th:href="@{/res/scope/client}">/res/scope/client</a></li>
+			<li><a th:href="@{/res/scope/account}">/res/scope/account</a></li>
+			
+			<li><a th:href="@{/res/auth/admin/actuator}">/res/auth/admin/actuator</a></li>
+			<li><a th:href="@{/res/auth/all/admin}">/res/auth/all/admin</a></li>
+			<li><a th:href="@{/res/auth/user/client}">/res/auth/user/client</a></li>
+		</ul>
+	</div>
+</body>
+</html>

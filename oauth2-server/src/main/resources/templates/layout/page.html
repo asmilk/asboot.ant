@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:fragment="draw(pageTitle, pageLink, pageScript, pageBody)">
+<head th:replace="layout/head::draw(~{::title},~{::link},~{::script})">
+	<title th:replace="${pageTitle}"></title>
+	<link th:replace="${pageLink}" />
+	<script th:replace="${pageScript}"></script>
+</head>
+<body th:replace="${pageBody}">
+</body>
+<h1 class="copy" th:include="layout/foot::h1"></h1>
+</html>
