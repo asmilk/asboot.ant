@@ -3,6 +3,7 @@ package asboot.auth.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,11 +36,12 @@ public class GroupMemberEntity implements Serializable {
 	private Long id;
 
 	@OneToOne
-	@JoinColumn(name = "username", unique = true)
+	@JoinColumn(name = "username", unique = true, foreignKey = @ForeignKey(name = "FK_GROUP_MEMBERS__USERNAME"))
 	@JacksonXmlProperty(localName = "User")
 	private UserEntity user;
 
 	@ManyToOne
+	@JoinColumn(name = "group_id", foreignKey = @ForeignKey(name = "FK_GROUP_MEMBERS__GROUP_ID"))
 	@JsonBackReference
 	@JacksonXmlProperty(localName = "Group")
 	private GroupEntity group;

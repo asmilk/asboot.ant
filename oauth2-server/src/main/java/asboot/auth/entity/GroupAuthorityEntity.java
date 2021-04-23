@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,6 +36,7 @@ public class GroupAuthorityEntity implements Serializable {
 	private String authority;
 
 	@ManyToOne
+	@JoinColumn(name = "group_id", foreignKey = @ForeignKey(name = "FK_GROUP_AUTHORITIES__GROUP_ID"))
 	@JsonBackReference
 	@JacksonXmlProperty(localName = "Group")
 	private GroupEntity group;

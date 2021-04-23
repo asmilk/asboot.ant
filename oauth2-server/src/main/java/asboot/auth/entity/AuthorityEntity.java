@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -39,7 +40,7 @@ public class AuthorityEntity implements Serializable {
 	@Valid
 	@ManyToOne
 	@JsonBackReference
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "username", foreignKey = @ForeignKey(name = "FK_AUTHORITIES__USERNAME"))
 	@JacksonXmlProperty(localName = "User")
 	@Parameter(hidden = true)
 	@Schema(hidden = true)
